@@ -2,11 +2,442 @@
 <html>
 
 <head>
+    <style>
+        #corner {
+            border-radius: 6px;
+            background: #73AD21;
+            padding: 5px;
+            width: 10px;
+            height: 10px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px;
+            grid-template-rows: 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px 22px;
+            background-color: rgba(255, 255, 255, 1);
+            padding: 1px;
+            place-content: center;
+        }
+        
+        .grid-item {
+            background-color: rgba(255, 255, 255, 1);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+    </style>
     <title>Pathfinding algorithms</title>
 </head>
 
 <body>
     <p>let's see how this one goes :)</p>
+    <script>
+        function change() {
+            document.getElementById("corner").style.color = "red";
+        }
+    </script>
+    <div class="grid-container">
+        <div class="grid-item" , id="corner" , onclick="change()"> </div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+        <div class="grid-item" , id="corner"></div>
+
+    </div>
 </body>
 
 </html>
